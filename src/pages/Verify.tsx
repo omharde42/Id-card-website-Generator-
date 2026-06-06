@@ -45,7 +45,7 @@ const Verify = () => {
         return;
       }
       // Sanitize: keep only string scalar fields, truncate values
-      const safe: IDCardData = {};
+      const safe = {} as IDCardData;
       for (const [k, v] of Object.entries(parsed as Record<string, unknown>)) {
         if (typeof k !== 'string' || k.length > 64) continue;
         if (v == null) continue;
