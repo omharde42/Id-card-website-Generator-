@@ -29,16 +29,32 @@ const Verify = () => {
 
   useEffect(() => {
     const data = searchParams.get('data');
-    if (data) {
-      try {
-        const decoded = decodeURIComponent(atob(data));
-        const parsed = JSON.parse(decoded);
-        setCardData(parsed);
-      } catch (e) {
-        setError('Invalid or corrupted QR code data');
-      }
-    } else {
+    if (!data) {
       setError('No verification data found');
+      return;
+    }
+    if (data.length > 8192) {
+      setError('Verification payload too large');
+      return;
+    }
+    try {
+      const decoded = decodeURIComponent(atob(data));
+      const parsed = JSON.parse(decoded);
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        setError('Invalid verification data');
+        return;
+      }
+      // Sanitize: keep only string scalar fields, truncate values
+      const safe: IDCardData = {};
+      for (const [k, v] of Object.entries(parsed as Record<string, unknown>)) {
+        if (typeof k !== 'string' || k.length > 64) continue;
+        if (v == null) continue;
+        if (typeof v === 'string') safe[k] = v.slice(0, 512);
+        else if (typeof v === 'number' || typeof v === 'boolean') safe[k] = String(v);
+      }
+      setCardData(safe);
+    } catch {
+      setError('Invalid or corrupted QR code data');
     }
   }, [searchParams]);
 
