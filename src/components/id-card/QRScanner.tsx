@@ -75,13 +75,31 @@ const QRScanner: React.FC<QRScannerProps> = ({ open, onClose }) => {
   };
 
   const handleScanSuccess = (decodedText: string) => {
+    // Hard cap on payload size to prevent UI overflow / abuse
+    if (decodedText.length > 4096) {
+      toast.error('QR payload too large');
+      return;
+    }
     try {
-      const data = JSON.parse(decodedText);
-      setScannedData(data);
+      const parsed = JSON.parse(decodedText);
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        setScannedData({ rawData: decodedText.slice(0, 1024) });
+        toast.success('QR Code scanned!');
+        return;
+      }
+      // Sanitize: keep only string/number/boolean values, truncate strings
+      const safe: Record<string, string> = {};
+      for (const [k, v] of Object.entries(parsed)) {
+        if (typeof k !== 'string' || k.length > 64) continue;
+        if (v == null) continue;
+        if (typeof v === 'string') safe[k] = v.slice(0, 512);
+        else if (typeof v === 'number' || typeof v === 'boolean') safe[k] = String(v);
+      }
+      setScannedData(safe);
       toast.success('QR Code scanned successfully!');
     } catch {
       // If not JSON, treat as plain text
-      setScannedData({ rawData: decodedText });
+      setScannedData({ rawData: decodedText.slice(0, 1024) });
       toast.success('QR Code scanned!');
     }
   };
