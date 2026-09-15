@@ -260,6 +260,116 @@ const Index = () => {
           </div>
         </header>
 
+        {/* Hero Section */}
+        <section className="flex-1">
+          <div className="container mx-auto px-4 py-16 md:py-24 text-center space-y-8">
+            <img src={idcraftLogo} alt="IDCRAFT Logo" className="mx-auto w-28 h-28 object-contain rounded-2xl shadow-xl" />
+            <div className="space-y-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+                Design Professional ID Cards <span className="text-primary">in Minutes</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                IDCRAFT is a universal ID card generator for schools, offices, events, gyms and more. Design, customize, and download print-ready ID cards with smart QR codes — no design skills needed.
+              </p>
+            </div>
+            <div className="flex gap-3 justify-center flex-wrap">
+              <Button onClick={() => navigate('/auth')} size="lg" className="gap-2">
+                Get Started Free <ArrowRight className="w-4 h-4" />
+              </Button>
+              <Button variant="outline" size="lg" className="gap-2" asChild>
+                <a href="https://github.com/omharde42/Id-card-website-Generator-.git" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4" /> View on GitHub
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* About Us */}
+          <div className="bg-muted/50 border-y border-border">
+            <div className="container mx-auto px-4 py-16 max-w-4xl text-center space-y-4">
+              <h3 className="text-3xl font-bold text-foreground">About Us</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                IDCRAFT was built with one simple mission: to make professional ID card creation accessible to everyone. Whether you're a school issuing student IDs, a company onboarding employees, or an event organizer managing attendees, IDCRAFT gives you a fast, secure and beautiful way to generate identity cards — complete with photos, custom fields, and scannable QR codes that carry full cardholder details for instant verification.
+              </p>
+            </div>
+          </div>
+
+          {/* Why Choose IDCRAFT */}
+          <div className="container mx-auto px-4 py-16 max-w-6xl">
+            <div className="text-center space-y-3 mb-12">
+              <h3 className="text-3xl font-bold text-foreground">Why Choose IDCRAFT?</h3>
+              <p className="text-muted-foreground max-w-xl mx-auto">Everything you need to create, manage and verify ID cards — all in one place.</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: QrCode, title: 'Smart QR Verification', desc: 'Every card carries a QR code with full cardholder details — scan it with any app to instantly verify identity.' },
+                { icon: Users, title: 'Bulk Generation', desc: 'Import hundreds of records from Excel or CSV and generate print-ready cards for everyone in one click.' },
+                { icon: Palette, title: 'Full Customization', desc: 'Choose layouts, shapes, sizes, colors, custom fields and photos. Your brand, your design, your way.' },
+                { icon: Sparkles, title: 'AI-Powered Tools', desc: 'Extract data from photos automatically and get smart design suggestions powered by AI.' },
+                { icon: ShieldCheck, title: 'Secure by Design', desc: 'Your cards and photos are stored privately with signed URLs, rate-limited auth and protected access.' },
+                { icon: Zap, title: 'Fast & Print-Ready', desc: 'Download high-resolution PNG cards instantly, or export a whole batch as a ZIP — ready for printing.' },
+              ].map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="bg-card rounded-xl border border-border p-6 space-y-3 hover:shadow-md transition-shadow">
+                  <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <h4 className="font-semibold text-foreground">{title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* What Makes It Special */}
+          <div className="bg-muted/50 border-y border-border">
+            <div className="container mx-auto px-4 py-16 max-w-4xl text-center space-y-6">
+              <div className="inline-flex items-center gap-2 text-primary font-semibold">
+                <Layers className="w-5 h-5" /> What Makes IDCRAFT Special
+              </div>
+              <h3 className="text-3xl font-bold text-foreground">One Tool. Every Identity Card.</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Unlike generic design tools, IDCRAFT understands ID cards. It supports standard card sizes like CR80, dynamic portrait and landscape orientations, institution-specific signatory titles, and photo-to-record matching for bulk jobs. Save your designs to your account, search and edit them anytime, and trust that every QR code stays perfectly in sync with the card it belongs to.
+              </p>
+              <Button onClick={() => navigate('/auth')} size="lg" className="gap-2">
+                Start Creating Now <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t border-border bg-card/50">
+          <div className="container mx-auto px-4 py-10">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-3">
+                <img src={idcraftLogo} alt="IDCRAFT Logo" className="w-10 h-10 object-contain rounded-lg" />
+                <div>
+                  <p className="font-bold text-foreground">IDCRAFT</p>
+                  <p className="text-xs text-muted-foreground">Universal ID Card Generator</p>
+                </div>
+              </div>
+              <div className="text-center space-y-1">
+                <p className="text-sm text-muted-foreground">
+                  Made by <span className="font-semibold text-foreground">Om Harde</span> — Founder & CEO of <span className="font-semibold text-foreground">B2C Solution</span>
+                </p>
+                <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} IDCRAFT. All rights reserved.</p>
+              </div>
+              <Button variant="outline" size="sm" className="gap-2" asChild>
+                <a href="https://github.com/omharde42/Id-card-website-Generator-.git" target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4" /> Star on GitHub
+                </a>
+              </Button>
+            </div>
+          </div>
+        </footer>
+      </div>;
+  }
+
+  // Unused legacy block retained for reference
+  if (false) {
+    return <div className="min-h-screen bg-background flex flex-col">
+        <header className="border-b border-border bg-card/50 backdrop-blur-sm">
+        </header>
         {/* Login Required Content */}
         <div className="flex-1 flex items-center justify-center">
           <div className="text-center space-y-6 p-8">
