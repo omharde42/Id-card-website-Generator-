@@ -2,7 +2,7 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toPng } from 'html-to-image';
 import { toast } from 'sonner';
-import { LogOut, User, Loader2, FolderOpen, ScanLine, Users } from 'lucide-react';
+import { LogOut, User, Loader2, FolderOpen, ScanLine, Users, Github, QrCode, ShieldCheck, Zap, Palette, Layers, Sparkles, ArrowRight } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { User as SupabaseUser, Session } from '@supabase/supabase-js';
 import { IDCardConfig, CategoryType, getDefaultFields, signatoryTitles, IDCardField, defaultCardSizes } from '@/types/idCard';
