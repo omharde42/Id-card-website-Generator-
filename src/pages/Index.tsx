@@ -364,29 +364,6 @@ const Index = () => {
         </footer>
       </div>;
   }
-
-  // Unused legacy block retained for reference
-  if (false) {
-    return <div className="min-h-screen bg-background flex flex-col">
-        <header className="border-b border-border bg-card/50 backdrop-blur-sm">
-        </header>
-        {/* Login Required Content */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-center space-y-6 p-8">
-            <img src={idcraftLogo} alt="IDCRAFT Logo" className="mx-auto w-24 h-24 object-contain rounded-xl shadow-lg" />
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-foreground">Welcome to IDCRAFT</h2>
-              <p className="text-muted-foreground max-w-md">Please login or create an account to start generating professional ID cards for schools, offices, events, and more. </p>
-            </div>
-            <div className="flex gap-3 justify-center">
-              <Button onClick={() => navigate('/auth')} size="lg">
-                Login to Get Started
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>;
-  }
   return <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
